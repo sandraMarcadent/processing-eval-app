@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 # Configure Django App for Heroku.
-import django-heroku
+import django_heroku
 
 django_heroku.settings(locals())
 
