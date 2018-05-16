@@ -1,0 +1,41 @@
+{% load static %}
+<html>
+<head>
+    <!-- twitter bootstrap CSS stylesheet - included to make things pretty, not needed or used by cornerstone -->
+    {% load static %}
+   
+    <link href="{% static 'polls/cornerstoneWebImageLoader-master/examples/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'polls/cornerstoneWebImageLoader-master/examples/cornerstone.min.css' %}" rel="stylesheet">
+    
+</head>
+<body>
+    
+<div class="container">
+    <div class="page-header">
+        <h1>{{ question.question_text }}</h1>
+        <br>
+    </div>
+
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <ul>
+    {% for choice in question.choice_set.all %}
+        <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+    {% endfor %}
+    </ul>
+
+    <img src="{{question.image.url}}"/>
+    <br /> 
+    <font color="green">True answer: class {{question.image_class}}</font>
+    <br /> 
+
+    <br />
+    {% if question.is_last %}
+    <a href="{% url 'prepolls:index' %}">Home</a>
+    {% endif %}
+
+
+    {% if not question.is_last %}
+    <a href="{% url 'prepolls:detail' question.id|add:1 %}"> --> continue voting</a>
+    <br /> 
+    <a href="{% url 'prepolls:index' %}">Home</a>
+    {% endif %}

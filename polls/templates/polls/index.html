@@ -1,0 +1,36 @@
+{% load static %}
+<html>
+<head>
+    <!-- twitter bootstrap CSS stylesheet - included to make things pretty, not needed or used by cornerstone -->
+    {% load static %}
+   
+    <link href="{% static 'polls/cornerstoneWebImageLoader-master/examples/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'polls/cornerstoneWebImageLoader-master/examples/cornerstone.min.css' %}" rel="stylesheet">
+    
+</head>
+<body>
+    
+<div class="container">
+
+    <div class="page-header">
+        <h1> 224 x 224 - Testing form </h1>
+        <br>
+    </div>
+        
+        {% if latest_question_list %}
+        <b>
+        <ul>
+        {% for question in latest_question_list %}
+            <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+        {% endfor %}
+        </ul>
+        </b>
+        <a style="color:SlateBlue" href="{% url 'polls:fresults' %}">View test results</a>
+        <br />
+        <a style="color:SlateBlue" href="{% url 'index' %}">Home</a>
+
+        {% else %}
+            <p>No polls are available.</p>
+        {% endif %}
+
+

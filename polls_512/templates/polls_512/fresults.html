@@ -1,0 +1,25 @@
+{% load static %}
+<html>
+<head>
+    <!-- twitter bootstrap CSS stylesheet - included to make things pretty, not needed or used by cornerstone -->
+    {% load static %}
+   
+    <link href="{% static 'polls/cornerstoneWebImageLoader-master/examples/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'polls/cornerstoneWebImageLoader-master/examples/cornerstone.min.css' %}" rel="stylesheet">
+    
+</head>
+<body>
+    
+<div class="container">
+    <div class="page-header">
+        <h1> Testing results </h1>
+        <br>
+    </div>
+    <p style="font-size:20px;" >Individual class accuracy: {{local_class_acc }} %</p>
+    <p style="font-size:20px;" >Individual authenticity accuracy: {{local_authenticity_acc}} %</p>
+    <p style="font-size:20px;" >Global class accuracy: {{class_acc }} %</p>
+    <p style="font-size:20px;" >Global authenticity accuracy: {{authenticity_acc}} %</p>
+    <br>
+    <br>
+
+    <a href="{% url 'index' %}">Home</a>

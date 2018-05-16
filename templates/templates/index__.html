@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+
+<body>
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'old_style.css' %}" />
+{{ 'Hello world' }}
+    
+  <p>Before the script...</p>
+
+  <div id="pan">
+  <img src="./media/gallery/inputB__uint16_33.png" style="position: fixed; top: 0; left: 0; width: 500; height: 500;">
+</div>
+   
+  {% load static %}
+  <script type="text/javascript" src="{% static test.js %}"></script>
+
+  <p>...After the script.</p>
+
+
+{% load static %}
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="{% static jquery.panzoom.js %}"></script>
+
+<script type="text/javascript">
+jQuery(document).ready(function(){
+$("pan").panzoom();
+
+// Pass options 
+$("pan").panzoom({ minScale: 0, $zoomRange: $("input[type='range']") });
+    });
+</script>
+
+</body>
+
+</html>

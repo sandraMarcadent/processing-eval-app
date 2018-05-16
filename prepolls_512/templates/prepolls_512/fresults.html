@@ -1,0 +1,28 @@
+{% if alert %}
+<script>
+    alert("Congratulations! You made 5 correct answers! Please go to evaluation step.");
+</script>
+{% endif %}
+
+{% load static %}
+<html>
+<head>
+    <!-- twitter bootstrap CSS stylesheet - included to make things pretty, not needed or used by cornerstone -->
+    {% load static %}
+   
+    <link href="{% static 'polls/cornerstoneWebImageLoader-master/examples/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'polls/cornerstoneWebImageLoader-master/examples/cornerstone.min.css' %}" rel="stylesheet">
+    
+</head>
+<body>
+    
+<div class="container">
+    <div class="page-header">
+        <h1> Training results </h1>
+        <br>
+    </div>
+
+    <p style="font-size:20px;" > Individual class accuracy: {{local_class_acc }} %</p>
+    <p style="font-size:20px;" > Global class accuracy: {{class_acc }} %</p>
+
+    <a href="{% url 'index' %}">Home</a>

@@ -1,0 +1,19 @@
+{% load static %}
+<html>
+<head>
+    <!-- twitter bootstrap CSS stylesheet - included to make things pretty, not needed or used by cornerstone -->
+    {% load static %}
+   
+    <link href="{% static 'polls/cornerstoneWebImageLoader-master/examples/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'polls/cornerstoneWebImageLoader-master/examples/cornerstone.min.css' %}" rel="stylesheet">
+    
+</head>
+<body>
+    
+
+<script>
+    alert("Thank you for your participation!");
+</script>
+<a  href="{% url 'polls:fresults' %}">View test results</a>
+<br>
+<a  href="{% url 'index' %}">Home</a>

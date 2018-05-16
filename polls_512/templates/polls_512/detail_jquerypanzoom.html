@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+   
+  <head>
+    <title>Panzoom for jQuery</title>
+           
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style type="text/css">
+      body { background: #F5FCFF; color: #333666; }
+      section { text-align: center; margin: 100px 0; }
+      .panzoom-parent { border: 10px solid #333; }
+      .panzoom-parent .panzoom { border: 10px dashed #666; }
+      .buttons { margin: 40px 100 100; }
+    </style>
+      
+    {% load static %}
+    <script type="text/javascript" src="{% static 'polls/jqPanzoom/node_modules/jquery.panzoom/test/libs/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'polls/jqPanzoom/node_modules/jquery.panzoom/dist/jquery.panzoom.js' %}"></script>
+    <script type="text/javascript" src="{% static 'polls/jqPanzoom/node_modules/jquery.panzoom/test/libs/jquery.mousewheel.js' %}"></script>
+      
+  </head>   
+  <section id="focal">
+      <h1>Use the mousewheel to zoom on a focal point</h1>
+      <div class="parent">
+        <div class="panzoom">
+        <img src="{{question.image.url}}"/>
+        </div>
+      </div>
+      <script>
+        (function() {
+          var $section = $('#focal');
+          var $panzoom = $section.find('.panzoom').panzoom();
+          $panzoom.parent().on('mousewheel.focal', function( e ) {
+            e.preventDefault();
+            var delta = e.delta || e.originalEvent.wheelDelta;
+            var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
+            $panzoom.panzoom('zoom', zoomOut, {
+              animate: false,
+              focal: e
+            });
+          });
+        })();
+      </script>
+    </section>
+    
+  <h1>{{ question.question_text }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'polls:vote' question.id %}" method="post">
+{% csrf_token %}
+{% for choice in question.choice_set.all %}
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
+{% endfor %}
+<input type="submit" value="Vote" />
+</form>
+    
+</html>
