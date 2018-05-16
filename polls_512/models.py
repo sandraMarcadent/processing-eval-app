@@ -3,7 +3,6 @@ from django.utils import timezone
 import datetime
 from django.utils import timezone
 import os
-from PIL import Image
 from django.conf import settings
 from django.contrib.auth.models import User
 from os import listdir
