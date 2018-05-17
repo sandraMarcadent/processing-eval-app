@@ -87,12 +87,13 @@ def create_questions_set():
                 choice.save()
 
         # Create question set
-                                
-        for idx in range(0, 5):
+        max_=5
+		
+        for idx in range(0, max_):
             
             file = allfiles[idx]
             
-            if idx == 9:
+            if idx == max_-1:
                 create_question_choice_couple(os.path.join(basepath, file), file, idx, is_last=True)
             else:
                 create_question_choice_couple(os.path.join(basepath, file), file, idx, is_last=False)
