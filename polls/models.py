@@ -62,7 +62,7 @@ def create_questions_set():
                                 
             question = Question()
                                 
-            question.question_text = str(img_indx)+'/20-This image corresponds to a...'
+            question.question_text = str(img_indx)+'/-This image corresponds to a...'
             question.image = img_path
             question.pub_date = timezone.now()
                                 
@@ -88,7 +88,7 @@ def create_questions_set():
 
         # Create question set
                                 
-        for idx in range(0, 20):
+        for idx in range(0, 5):
             
             file = allfiles[idx]
             
